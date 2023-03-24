@@ -211,9 +211,75 @@ Neste exemplo, estamos usando o método ConfigureServices do objeto WebApplicati
 
 Estou com problemas para inserir um novo Fornecedor, pois não quero informar o Id na Inserção de Registro. Segue o código que você mesmo gerou:
 
-![Cooperchip, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatGPT/blob/main/imgs/img-codigo-1.png)
+![Código](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatGPT/blob/main/imgs/img-codigo-1.png)
 
+![ChatGPT, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatGPT/blob/main/imgs/chat-gpt-a-esquerda.png)
 
+Para que o código gere automaticamente um valor de Id de forma AutoIncrement ao inserir um novo registro na tabela usando ADO.NET sem ORM, você pode modificar o método AddAsync da seguinte maneira:
+
+```csharp
+
+public async Task AddAsync(T entity){
+    using(var connection = new SqlConnection(_connectionString))
+    {
+        await connection.OpenAsync();
+        using(var command = connection.CreateCommand())
+        {
+            // Obtém todas as propriedades da classe T exceto a propriedade Id
+            var properties = typeof(T).GetProperties().Where(p => p.Name != "Id");
+
+            var columns = string.Join(",", properties.Select(p => p.Name));
+
+            var values = string.Join(",", properties.Select(p => "@"+ p.Name));
+
+            command.CommandText = $"INSERT INTO {typeof(T).Name}({columns}) VALUES ({values}); SELECT SCOPE_IDENTITY();";
+            foreach(var prop in properties)
+            {
+                command.Parameters.AddWithValue("@"+ prop.Name, prop.GetValue(entity));
+            }
+            
+            // Obtém o valor gerado automaticamente para a coluna de identidade
+           var id = await command.ExecuteScalarAsync();
+            
+            // Define o valor da propriedade Id do objeto entity com o valor gerado automaticamente pelo banco de dados
+            typeof(T).GetProperty("Id").SetValue(entity, Convert.ToInt32(id));
+        }
+    }
+}
+
+```
+
+Nesse código modificado, estamos obtendo todas as propriedades da classe T exceto a propriedade Id e usando essas propriedades para construir a consulta SQL INSERT. 
+
+Além disso, estamos adicionando a cláusula SELECT SCOPE_IDENTITY() ao final da consulta para retornar o valor gerado automaticamente pelo banco de dados para a coluna de identidade. 
+
+Em seguida, usamos o método ExecuteScalarAsync para executar a consulta e obter o valor gerado automaticamente pelo banco de dados. 
+
+Por fim, definimos o valor da propriedade Id do objeto entity com o valor gerado automaticamente pelo banco de dados.
+Lembre-se de que esse código pressupõe que a tabela no banco de dados tenha uma coluna de identidade chamada Id e que essa coluna seja configurada para gerar valores automaticamente.
+Espero que isso ajude! 😊
+
+```csharp
+
+// Psusa...
+```
+
+![Cooperchip, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatGPT/blob/main/imgs/poeta-a-esquerda.png)
+
+Dado o código abaixo, em c#, utilizando ADO.Net puro sem ORM, pode modificá-lo para que eu consiga alterar os dados? 
+- Acho que eu não posso enviar a propriedade Id, pois é minha chave primária. 
+- Pode me ajudar ?
+
+![ChatGPT, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatGPT/blob/main/imgs/chat-gpt-a-esquerda.png)
+
+Claro! 
+Você pode me enviar o código para que eu possa ajudá-lo a fazer as alterações necessárias? 😊
+
+![Cooperchip, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatGPT/blob/main/imgs/poeta-a-esquerda.png)
+
+Sim, desculpa. Segue o código que está com problemas para atualização:
+
+![Código](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatGPT/blob/main/imgs/img-codigo-2.png)
 
 
 ---
