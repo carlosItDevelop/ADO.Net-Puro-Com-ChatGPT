@@ -282,6 +282,141 @@ Sim, desculpa. Segue o código que está com problemas para atualização:
 ![Código](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatGPT/blob/main/imgs/img-codigo-2.png)
 
 
+![ChatGPT, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatGPT/blob/main/imgs/chat-gpt-a-esquerda.png)
+
+Você está correto! 
+Você não deve enviar a propriedade Id como parte da cláusula SET na instrução UPDATE. 
+
+Uma maneira de fazer isso é modificar a linha que cria a string setValues para excluir a propriedade Id. Aqui está o código modificado:
+
+```csharp
+
+public async Task UpdateAsync(T entity)
+{
+    using(varconnection = new SqlConnection(_connectionString))
+    {
+        await connection.OpenAsync();
+        using(var command = connection.CreateCommand())
+        {
+            var setValues = string.Join(",", typeof(T).GetProperties().Where(p => p.Name != "Id").Select(p => $"{p.Name}=@{p.Name}"));
+
+            command.CommandText = $"UPDATE {typeof(T).Name}SET {setValues}WHERE Id=@Id";
+
+            foreach(var prop in typeof(T).GetProperties())
+           {
+                command.Parameters.AddWithValue("@"+ prop.Name, prop.GetValue(entity));
+            }
+            await command.ExecuteNonQueryAsync();
+        }
+    }
+}
+```
+
+Isso deve resolver o problema. Você tem mais alguma dúvida? 😊
+
+![Cooperchip, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatGPT/blob/main/imgs/poeta-a-esquerda.png)
+
+Não, Obrigado. Tem mais alguma sugestão?
+
+![ChatGPT, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatGPT/blob/main/imgs/chat-gpt-a-esquerda.png)
+
+Sim!
+Execute o código modificado. 
+
+Você pode criar um objeto do tipo T com os valores atualizados para as propriedades que deseja alterar e passá-lo como argumento para o método UpdateAsync. 
+
+Certifique-se de que a propriedade Id do objeto corresponda ao registro que deseja atualizar no banco de dados. 
+
+Depois de chamar o método UpdateAsync, você pode verificar se os valores foram atualizados corretamente no banco de dados.
+Você tem mais alguma dúvida? 😊
+
+
+![Cooperchip, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatGPT/blob/main/imgs/poeta-a-esquerda.png)
+
+Pode criar uma classe EntityBase, abstrata, que represente a classe mãe de todos os Modelos criados no meu projeto Asp.Net Core 7? 
+
+- Esta classe deve implementar comparaçãos entre objetos, garantindo sua identidade única, sobreescrevendo operadores como "==", "!=", "Equals". E, também, comparando seu GetHashCode ?
+
+![ChatGPT, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatGPT/blob/main/imgs/chat-gpt-a-esquerda.png)
+
+Claro! Aqui está um exemplo de como você pode criar uma classe EntityBase abstrata que implementa a comparação entre objetos e garante sua identidade única:
+
+```csharp
+
+public abstract class EntityBase
+{
+           public int Id {  get; protected set; }
+	public override bool Equals(object obj)
+	{
+        var compareTo = obj as EntityBase;
+	        if(ReferenceEquals(this, compareTo)) return true;
+        if(ReferenceEquals(null, compareTo)) return false;
+	        return Id.Equals(compareTo.Id);
+    }
+	public static bool operator == (EntityBase a, EntityBase b)
+    {
+        if(ReferenceEquals(a, null) && ReferenceEquals(b, null))
+            return true;
+	       if(ReferenceEquals(a, null) || ReferenceEquals(b, null))
+            return false;
+	       returna.Equals(b);
+    }
+	public static bool operator != (EntityBase a, EntityBase b)
+    {
+        return !(a == b);
+    }
+
+	public override int GetHashCode()
+	{
+        return (GetType().GetHashCode() * 907) + Id.GetHashCode();
+    }
+	
+	// Este método eu acrescentei;
+	public override string ToString() =>  => GetType().Name + " [Id=" + Id + "]";
+}
+```
+
+Essa classe EntityBase pode ser usada como classe mãe para todos os modelos criados em seu projeto Asp.Net Core 7. Ela sobrescreve os operadores ==, !=, o método Equals e também compara o GetHashCode para garantir a identidade única dos objetos. Isso ajuda?
+
+![Cooperchip, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatGPT/blob/main/imgs/poeta-a-esquerda.png)
+
+Pode fazer um resumo em alguns parágrafos do que este código acima faz?
+
+
+![ChatGPT, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatGPT/blob/main/imgs/chat-gpt-a-esquerda.png)
+
+Claro! 
+O código acima define uma classe abstrata chamada EntityBase que pode ser usada como a classe mãe de todos os modelos criados em seu projeto Asp.Net Core 7. 
+
+Ela contém uma propriedade Id que é usada para identificar unicamente cada objeto.
+A classe também sobrescreve os operadores == e !=, bem como o método Equals, para implementar a comparação entre objetos. 
+
+Isso permite que você compare dois objetos para ver se eles são iguais com base em seu Id.
+Além disso, a classe também sobrescreve o método GetHashCode para garantir que cada objeto tenha um código hash único. Isso é útil ao usar objetos dessa classe em coleções como dicionários ou conjuntos hash.
+Em resumo, essa classe fornece uma base sólida para seus modelos, permitindo que você os compare e garanta sua identidade única.
+
+![Cooperchip, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatGPT/blob/main/imgs/poeta-a-esquerda.png)
+
+Pode me dar uma explicação mais detalhada do que cada método da classe EntityBase faz ? De preferência em tópicos?
+
+
+![ChatGPT, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatGPT/blob/main/imgs/chat-gpt-a-esquerda.png)
+
+Claro! 
+Aqui está uma explicação mais detalhada do que cada método da classe EntityBase faz:
+
+	• public int Id { get; protected set; }: Esta é a propriedade Id que é usada para identificar unicamente cada objeto. Ela tem um modificador de acesso protected para o conjunto, o que significa que ela só pode ser definida dentro da própria classe ou de classes derivadas.
+	• public override bool Equals(object obj): Este é o método Equals que é sobrescrito para implementar a comparação entre objetos. Ele recebe um objeto como parâmetro e verifica se ele é igual ao objeto atual com base em seu Id.
+	• public static bool operator ==(EntityBase a, EntityBase b): Este é o operador == que é sobrescrito para implementar a comparação entre objetos. Ele recebe dois objetos como parâmetros e verifica se eles são iguais usando o método Equals.
+	• public static bool operator !=(EntityBase a, EntityBase b): Este é o operador != que é sobrescrito para implementar a comparação entre objetos. Ele recebe dois objetos como parâmetros e verifica se eles são diferentes usando o operador ==.
+	• public override int GetHashCode(): Este é o método GetHashCode que é sobrescrito para garantir que cada objeto tenha um código hash único. Ele usa uma combinação do código hash do tipo do objeto e do valor de seu Id para gerar um código hash único.
+	
+Espero que isso ajude a esclarecer as coisas!
+
+
+![Cooperchip, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatGPT/blob/main/imgs/poeta-a-esquerda.png)
+
+
 ---
 
 > Quer conhecer nosso projeto? Acesse nossos cursos na Udemy:  **[Acesse aqui](https://www.udemy.com/user/carlos-alberto-dos-santos-34/)**.
