@@ -1,18 +1,19 @@
 
-#### Projeto com Repositório Genérico, usando ADO.Net Puro e Reflection
+### Projeto com Repositório Genérico, usando ADO.Net Puro e Reflection
 sexta-feira, 24 de março de 2023 - 01:39
 
 ---
 
-![Tela Inicial do Projeto MedicalManagenet-Sys](https://user-images.githubusercontent.com/1213751/71663844-87052780-2d35-11ea-95c0-623a74885ebc.png "Antes do Dashboard")
-
-__Quer conhecer nosso projeto? Acesse o curso na Udemy:  **[Acesse aqui](https://www.udemy.com/course/curso-de-aspnet-core-mvc-2-2-do-zero-ao-ninja/?referralCode=41B345D11D74CEDD7E57)**.__
+![ADO Puro com ChatGPT - by: Cooperchip, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatCPT/blob/main/imgs/capa-post.png "ADO Puro com ChatGPT - by: Cooperchip, Inc")
 
 ---
-### *A partir deste ponto começaremos com as Seções Avançadas*
----
 
-> #### *Que fique claro que esta RC é do Projeto Aula e não do nosso Caso de Uso*
+> Quer conhecer nosso projeto? Acesse nossos cursos na Udemy:  **[Acesse aqui](https://www.udemy.com/user/carlos-alberto-dos-santos-34/)**.
+
+
+> #### *Use Case interessante, onde o ChatGPT e eu criamos uma API do Zero*
+
+
 
 
 ![Tela Inicial do Projeto MedicalManagenet-Sys](https://user-images.githubusercontent.com/1213751/71663844-87052780-2d35-11ea-95c0-623a74885ebc.png "Antes do Dashboard")
