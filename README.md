@@ -14,19 +14,22 @@ sexta-feira, 24 de março de 2023 - 01:39
 > #### *Use Case interessante, onde o ChatGPT e eu criamos uma API do Zero*
 
 
-[Cooperchip, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatCPT/blob/main/imgs/carlos.cooperchip.png).
+![Cooperchip, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatCPT/blob/main/imgs/carlos.cooperchip.png)
+
+![Tela Inicial do Projeto MedicalManagenet-Sys](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatCPT/blob/main/imgs/carlos.cooperchip.png "Antes do Dashboard")
+
 
 Pode criar um Repositorio Genérico e um Repositorio Especializado para realizar um CRUD de Fornecedor em ADO.Net puro com Asp.Net Core 7 ?
 
-[ChatGPT, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatCPT/blob/main/imgs/chat-gpt.png).
+[ChatGPT, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatCPT/blob/main/imgs/chat-gpt.png)
 
 Sim, é possível criar um Repositório Genérico e um Repositório Especializado para realizar um CRUD de Fornecedor em ADO.Net puro com Asp.Net Core 7. Você gostaria de ver um exemplo de código?
 
-[Cooperchip, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatCPT/blob/main/imgs/carlos.cooperchip.png).
+[Cooperchip, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatCPT/blob/main/imgs/carlos.cooperchip.png)
 
 Pode escrever este código em c# 11 ?
 
-[ChatGPT, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatCPT/blob/main/imgs/chat-gpt.png).
+[ChatGPT, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatCPT/blob/main/imgs/chat-gpt.png)
 
 Sim, é possível escrever o código em C# 11. Aqui está um exemplo de como um Repositório Genérico e um Repositório Especializado para realizar um CRUD de Fornecedor em ADO.Net puro com Asp.Net Core 7 pode ser implementado em C# 11:
 
@@ -68,20 +71,6 @@ public async Task UpdateAsync(T entity){
 
 ```
 
-
----
-
-![Tela Inicial do Projeto MedicalManagenet-Sys](https://user-images.githubusercontent.com/1213751/71663844-87052780-2d35-11ea-95c0-623a74885ebc.png "Antes do Dashboard")
-
-
-> __Validação global contra Ataque CSRF, prevenindo-se da ausências nas Actions;__
-
-
-
----
-
-Consultar a documentação para TagHelpers e ViewComponents, **[Leia aqui](https://docs.microsoft.com/pt-br/)**.
-Consultar a documentação para MarkDown, **[Leia aqui](http://daringfireball.net/projects/markdown/basics)**.
 
 ---
 
