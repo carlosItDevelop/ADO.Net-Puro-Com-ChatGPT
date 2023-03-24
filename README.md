@@ -185,6 +185,33 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
+![ChatGPT, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatGPT/blob/main/imgs/chat-gpt-a-esquerda.png)
+
+Se você está usando a versão 7 do Asp.Net Core, pode configurar os serviços no método Main da classe Program.cs usando o método ConfigureServices do objeto WebApplication. 
+
+Aqui está um exemplo de como você pode fazer isso:
+
+```csharp
+public static voidMain(string[] args)
+{
+    var builder = WebApplication.CreateBuilder(args);
+    var app = builder.Build();
+    app.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+    app.Services.Configure<ConnectionStringOptions>(builder.Configuration.GetSection("ConnectionStrings"));
+	// ...
+}
+```
+
+Neste exemplo, estamos usando o método ConfigureServices do objeto WebApplication para adicionar os serviços do Repositório Genérico e configurar as opções de string de conexão com o banco de dados. 
+
+É importante notar que este é apenas um exemplo e pode ser adaptado e melhorado de acordo com as necessidades específicas do projeto.
+
+
+![Cooperchip, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatGPT/blob/main/imgs/poeta-a-esquerda.png)
+
+Estou com problemas para inserir um novo Fornecedor, pois não quero informar o Id na Inserção de Registro. Segue o código que você mesmo gerou:
+
+img-codigo-1
 
 
 
