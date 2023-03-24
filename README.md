@@ -413,8 +413,11 @@ Aqui está uma explicação mais detalhada do que cada método da classe EntityB
 	
 Espero que isso ajude a esclarecer as coisas!
 
+---
 
-![Cooperchip, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatGPT/blob/main/imgs/poeta-a-esquerda.png)
+##### Imagem final, com o ChatGPT cansado de mim 😊
+
+![Imagem final, com o ChatGPT cansado de mim 😊](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatGPT/blob/main/imgs/img-final-chat.png)
 
 
 ---
