@@ -405,15 +405,33 @@ Pode me dar uma explicação mais detalhada do que cada método da classe Entity
 Claro! 
 Aqui está uma explicação mais detalhada do que cada método da classe EntityBase faz:
 
-	- [x] public int Id { get; protected set; }: Esta é a propriedade Id que é usada para identificar unicamente cada objeto. Ela tem um modificador de acesso protected para o conjunto, o que significa que ela só pode ser definida dentro da própria classe ou de classes derivadas.
+```csharp
+	 public int Id { get; protected set; }: 
+```
+	- Esta é a propriedade Id que é usada para identificar unicamente cada objeto. Ela tem um modificador de acesso protected para o conjunto, o que significa que ela só pode ser definida dentro da própria classe ou de classes derivadas.
 	
-	- [x] public override bool Equals(object obj): Este é o método Equals que é sobrescrito para implementar a comparação entre objetos. Ele recebe um objeto como parâmetro e verifica se ele é igual ao objeto atual com base em seu Id.
+```csharp	 
+	public override bool Equals(object obj): 
+	```
+	- Este é o método Equals que é sobrescrito para implementar a comparação entre objetos. Ele recebe um objeto como parâmetro e verifica se ele é igual ao objeto atual com base em seu **Id**.
 	
-	- [x] public static bool operator ==(EntityBase a, EntityBase b): Este é o operador == que é sobrescrito para implementar a comparação entre objetos. Ele recebe dois objetos como parâmetros e verifica se eles são iguais usando o método Equals.
-	
-	- [x] public static bool operator !=(EntityBase a, EntityBase b): Este é o operador != que é sobrescrito para implementar a comparação entre objetos. Ele recebe dois objetos como parâmetros e verifica se eles são diferentes usando o operador ==.
-	
-	- [x] public override int GetHashCode(): Este é o método GetHashCode que é sobrescrito para garantir que cada objeto tenha um código hash único. Ele usa uma combinação do código hash do tipo do objeto e do valor de seu Id para gerar um código hash único.
+```csharp	
+	public static bool operator ==(EntityBase a, EntityBase b)
+	//... 
+```
+	- Este é o operador **"=="** que é sobrescrito para implementar a comparação entre objetos. Ele recebe dois objetos como parâmetros e verifica se eles são iguais usando o método Equals.
+
+```csharp	
+	public static bool operator !=(EntityBase a, EntityBase b)
+	//.... 
+```
+	- Este é o operador **"!="** que é sobrescrito para implementar a comparação entre objetos. Ele recebe dois objetos como parâmetros e verifica se eles são diferentes usando o operador **"=="**.
+
+```csharp	
+	public override int GetHashCode()
+	//.... 	
+```
+	- Este é o método **GetHashCode** que é sobrescrito para garantir que cada objeto tenha um código hash único. Ele usa uma combinação do código hash do tipo do objeto e do valor de seu **Id** para gerar um código hash único.
 	
 Espero que isso ajude a esclarecer as coisas!
 
