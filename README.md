@@ -211,7 +211,8 @@ Neste exemplo, estamos usando o método ConfigureServices do objeto WebApplicati
 
 Estou com problemas para inserir um novo Fornecedor, pois não quero informar o Id na Inserção de Registro. Segue o código que você mesmo gerou:
 
-img-codigo-1
+![Cooperchip, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatGPT/blob/main/imgs/img-codigo-1.png)
+
 
 
 
