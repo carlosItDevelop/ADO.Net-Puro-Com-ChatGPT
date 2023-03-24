@@ -66,7 +66,126 @@ public async Task UpdateAsync(T entity){
         throw new NotImplementedException();
 }
 
+[HttpPost]
+public asyncTask<IActionResult> Add(Fornecedor fornecedor)
+{
+    await  _repository.AddAsync(fornecedor);
+    return CreatedAtAction(nameof(GetById), new{ id = fornecedor.Id }, fornecedor);
+}
+
+[HttpPut("{id}")]
+public async Task<IActionResult> Update(intid, Fornecedor fornecedor)
+{
+    if(id != fornecedor.Id) return BadRequest();
+    await _repository.UpdateAsync(fornecedor);
+    return NoContent();
+}
+
+[HttpDelete("{id}")]
+public asyncTask<IActionResult> Delete(int id)
+{
+    await _repository.DeleteAsync(id);
+    return NoContent();
+}
+
 ```
+
+Este é um exemplo de como uma Controller pode ser criada em C# para consumir o Repositório Genérico que implementamos acima com o Modelo Fornecedor. 
+
+A Controller possui métodos para realizar operações CRUD na tabela de Fornecedores usando o Repositório Genérico. 
+
+É importante notar que este é apenas um exemplo e pode ser adaptado e melhorado de acordo com as necessidades específicas do projeto.
+
+![Cooperchip, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatCPT/blob/main/imgs/carlos.cooperchip.png)
+
+Escreva o código para configuramos e conectarmos um Banco de Dados SQl Server para nosso exemplo acima.
+
+![ChatGPT, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatCPT/blob/main/imgs/chat-gpt.png)
+
+Claro! 
+Aqui está um exemplo de como podemos configurar e conectar um Banco de Dados SQL Server para nosso exemplo acima em C# com Asp.Net Core 7:
+
+Primeiro, precisamos adicionar a string de conexão com o banco de dados no arquivo appsettings.json:
+
+```json
+
+{
+  "ConnectionStrings":
+           {
+                  "DefaultConnection":"Server=(localdb)\\mssqllocaldb;Database=MeuBancoDeDados;Trusted_Connection=True;"
+	}
+}
+
+```
+
+Em seguida, precisamos configurar o serviço do Repositório Genérico no método ConfigureServices da classe Startup:
+
+```csharp
+
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+    services.Configure<ConnectionStringOptions>(Configuration.GetSection("ConnectionStrings"));
+}
+```
+
+Também precisamos criar uma classe ConnectionStringOptions para armazenar a string de conexão:
+
+```csharp
+
+public class ConnectionStringOptions{
+    public string DefaultConnection { get; set; }
+}
+```
+
+E por fim, precisamos modificar o construtor da classe Repository<T> para receber a string de conexão através do serviço de opções do Asp.Net Core:
+
+```csharp
+
+private readonly string _connectionString;
+
+public Repository(IOptions<ConnectionStringOptions> options)
+{
+    _connectionString = options.Value.DefaultConnection;
+}
+```
+
+Com estas alterações, estamos prontos para conectar nosso exemplo acima com um Banco de Dados SQL Server. 
+
+É importante notar que este é apenas um exemplo e pode ser adaptado e melhorado de acordo com as necessidades específicas do projeto.
+
+![Cooperchip, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatCPT/blob/main/imgs/carlos.cooperchip.png)
+
+Precisamos de uma classe de contexto neste caso ou não?
+
+![ChatGPT, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatCPT/blob/main/imgs/chat-gpt.png)
+
+Não, neste caso não precisamos de uma classe de contexto. Estamos usando ADO.Net puro para realizar operações CRUD na tabela e não estamos usando um ORM (Object-Relational Mapping) como o Entity Framework Core que requer uma classe de contexto para gerenciar o acesso ao banco de dados.
+A classe de contexto é usada pelo Entity Framework Core para gerenciar o acesso ao banco de dados e mapear as entidades do modelo para as tabelas do banco de dados. 
+
+Como estamos usando ADO.Net puro e escrevendo os comandos SQL diretamente nos métodos do Repositório Genérico, não precisamos de uma classe de contexto neste caso.
+
+
+![Cooperchip, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatCPT/blob/main/imgs/carlos.cooperchip.png)
+
+```csharp
+
+// ToDo: => Para projeto sem a Startup ...
+```
+
+O meu projeto está na versão 7 do Asp.Net Core, portanto não tem a classe Startup.cs. 
+- Como eu faço para configurar o código abaixo na classe Program.cs ? 
+
+```csharp
+
+public void ConfigureServices(IServiceCollection services) 
+{ 
+    services.AddScoped(typeof(IRepository<>), typeof(Repository<>)); 
+    services.Configure<ConnectionStringOptions>(Configuration.GetSection("ConnectionStrings")); 
+}
+```
+
+
 
 
 ---
