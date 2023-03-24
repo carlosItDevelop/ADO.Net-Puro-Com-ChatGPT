@@ -2,6 +2,8 @@
 ### Projeto com Repositório Genérico, usando ADO.Net Puro e Reflection
 sexta-feira, 24 de março de 2023 - 01:39
 
+> #### **Use Case interessante, onde o ChatGPT e eu criamos uma API do Zero**
+
 ---
 
 ![ADO Puro com ChatGPT - by: Cooperchip, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatCPT/blob/main/imgs/capa-post.png "ADO Puro com ChatGPT - by: Cooperchip, Inc")
@@ -10,9 +12,7 @@ sexta-feira, 24 de março de 2023 - 01:39
 
 > Quer conhecer nosso projeto? Acesse nossos cursos na Udemy:  **[Acesse aqui](https://www.udemy.com/user/carlos-alberto-dos-santos-34/)**.
 
-
-> #### *Use Case interessante, onde o ChatGPT e eu criamos uma API do Zero*
-
+---
 
 ![Cooperchip, Inc](https://github.com/carlosItDevelop/ADO.Net-Puro-Com-ChatCPT/blob/main/imgs/carlos.cooperchip.png)
 
